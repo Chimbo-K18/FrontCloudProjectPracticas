@@ -49,7 +49,7 @@ export class RecibeAnexo7Component  {
   anexo7: Anexo7 = new Anexo7();
 
   constructor(private documentoAnexo7: DocumentoAnexo7Service, private _formBuilder: FormBuilder ,private responsableppservice: Responsable_PPPService, private practicaservice: PracticaService, private anexo7service: Anexo7Service){
-    
+
   }
   ngOnInit(): void {
 
@@ -108,7 +108,7 @@ export class RecibeAnexo7Component  {
   descargarPDF(anexogenerado :any) {
 
     this.anexo7generado = anexogenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/documentoAnexo7/download/${this.anexo7generado}`;
+    const url = `http://68.183.134.207:8080/api/documentoAnexo7/download/${this.anexo7generado}`;
     window.open(url, '_blank');
   }
 
@@ -154,11 +154,11 @@ export class RecibeAnexo7Component  {
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo7') || '{}');
     const documentoAnexo7 = idDoc.id_documentoAnexo7;
-    
+
     this.anexo7service.updateDocumentoAnexo7(this.Anexo7id, documentoAnexo7).subscribe(
       response => {
         console.log('Documento actualizado correctamente');

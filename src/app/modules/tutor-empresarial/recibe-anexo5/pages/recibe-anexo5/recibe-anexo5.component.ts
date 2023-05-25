@@ -50,14 +50,14 @@ export class RecibeAnexo5Component  {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'carrera','descargar', 'Aceptar'];
   dataSource = new MatTableDataSource<Practica>([]);
   anexo5: Anexo5 = new Anexo5();
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   constructor(private documentoAnexo5: DocumentoAnexo5Service, private _formBuilder: FormBuilder ,private responsableppservice: Responsable_PPPService, private practicaservice: PracticaService, private anexo5service: Anexo5Service){
-    
+
   }
   ngOnInit(): void {
 
@@ -115,7 +115,7 @@ export class RecibeAnexo5Component  {
   descargarPDF(anexogenerado :any) {
 
     this.anexo5generado = anexogenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/documentoAnexo5/download/${this.anexo5generado}`;
+    const url = `http://68.183.134.207:8080/api/documentoAnexo5/download/${this.anexo5generado}`;
     window.open(url, '_blank');
   }
 
@@ -160,11 +160,11 @@ export class RecibeAnexo5Component  {
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo5') || '{}');
     const documentoAnexo5 = idDoc.id_documentoAnexo5;
-    
+
     this.anexo5service.updateDocumentoAnexo5(this.Anexo5id, documentoAnexo5).subscribe(
       response => {
         console.log('Documento actualizado correctamente');
@@ -173,11 +173,11 @@ export class RecibeAnexo5Component  {
         //console.error('Error al actualizar el documento', error);
       }
     );
-  
+
   }
 
 
-  
+
   resetStepper() {
     this.listarpracticas();
     this.stepper.reset();

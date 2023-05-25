@@ -73,8 +73,8 @@ export class GeneraAnexo2Component   implements AfterViewInit{
 
   isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder, 
-    private practicaservice: PracticaService, 
+  constructor(private _formBuilder: FormBuilder,
+    private practicaservice: PracticaService,
     private anexo2service: Anexo2Service,
     private documentoAnexo2:DocumentoAnexo2Service) { }
 
@@ -128,16 +128,16 @@ export class GeneraAnexo2Component   implements AfterViewInit{
 
   descargarPDF() {
     const idanexo2 = this.idAnexoGenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/anexo2/${idanexo2}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/anexo2/${idanexo2}`;
     window.open(url, '_blank');
   }
-  
 
-  
+
+
   fileChangeEvent(event: any) {
     this.filesToUpload = <Array<File>>event.target.files;
   }
-  
+
   onLoad(event: Event): void {
     const element = event.target as HTMLInputElement;
     const file = element.files?.item(0);
@@ -152,7 +152,7 @@ export class GeneraAnexo2Component   implements AfterViewInit{
       );
     }
   }
-  
+
   public upload(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -180,11 +180,11 @@ export class GeneraAnexo2Component   implements AfterViewInit{
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo2') || '{}');
     const documentoAnexo2 = idDoc.id_documentoAnexo2;
-    
+
     this.anexo2service.updateDocumentoAnexo2(this.idAnexoGenerado, documentoAnexo2).subscribe(
       response => {
         console.log('Documento actualizado correctamente');

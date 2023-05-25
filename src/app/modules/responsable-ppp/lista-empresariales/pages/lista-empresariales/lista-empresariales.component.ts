@@ -64,7 +64,7 @@ export class ListaEmpresarialesComponent implements OnInit {
       this.dataresponsable = datausu.idResponsablePPP;
       console.log(this.dataresponsable);
 
-      this.http.get('http://localhost:8080/api/tutorEmp/datos/' + this.dataresponsable).subscribe({
+      this.http.get('http://68.183.134.207:8080/api/tutorEmp/datos/' + this.dataresponsable).subscribe({
 
         next: (response: any) => {
           console.log(response);

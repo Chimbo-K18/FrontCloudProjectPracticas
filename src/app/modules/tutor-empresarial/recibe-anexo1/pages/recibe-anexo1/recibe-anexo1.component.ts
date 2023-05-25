@@ -68,7 +68,7 @@ export class RecibeAnexo1Component  {
   @ViewChild(MatStepper) stepper!: MatStepper;
 
   constructor(private documentoAnexo1: DocumentoAnexo1Service, private _formBuilder: FormBuilder ,private responsableppservice: Responsable_PPPService, private practicaservice: PracticaService, private anexo1service: Anexo1Service){
-    
+
   }
   ngOnInit(): void {
 
@@ -92,8 +92,8 @@ export class RecibeAnexo1Component  {
       this.dataF1.data = this.practicasSolicitudesd
     });
   }
- 
-  
+
+
   carreradata:any;
   listaconvocatoria: any[] = [];
   conporanexo:any;
@@ -113,7 +113,7 @@ export class RecibeAnexo1Component  {
   descargarPDF(anexogenerado :any) {
 
     this.anexo1generado = anexogenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/documentoAnexo1/download/${this.anexo1generado}`;
+    const url = `http://68.183.134.207:8080/api/documentoAnexo1/download/${this.anexo1generado}`;
     window.open(url, '_blank');
   }
 
@@ -152,7 +152,7 @@ export class RecibeAnexo1Component  {
                     console.log(dataupdate);
                   });
                 });
-               
+
                 this.actualizarDocumento();
                 break;
             }
@@ -188,7 +188,7 @@ export class RecibeAnexo1Component  {
   }
 
 
-  
+
   resetStepper() {
     this.stepper.reset();
   }

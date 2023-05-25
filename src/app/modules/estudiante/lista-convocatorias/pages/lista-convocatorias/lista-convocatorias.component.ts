@@ -147,7 +147,7 @@ export class ListaConvocatoriasComponent {
 
   descargarPDF() {
     const idSolicitud = this.solicitudConvocatoriaGenerada; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/obtener/${idSolicitud}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/obtener/${idSolicitud}`;
     window.open(url, '_blank');
   }
 
@@ -257,16 +257,16 @@ export class ListaConvocatoriasComponent {
               this.solicitudconvoservice.crearSolicitudConvocatoria(this.solicitudconvocatorias).subscribe(
 
                 data => {
-    
+
                   console.log(data.idSolicitudConvocatoria)
                   this.solicitudConvocatoriaGenerada = data.idSolicitudConvocatoria
-    
-    
+
+
                 });
              }
           });
 
-          
+
 
 
         });

@@ -98,11 +98,11 @@ export class Anexo1Component implements AfterViewInit {
 
   isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder, 
-    private solicitudPracticas: SolicitudpracticasService, 
+  constructor(private _formBuilder: FormBuilder,
+    private solicitudPracticas: SolicitudpracticasService,
     private anexo1service: Anexo1Service,
     private solicitudService: SolicitudConvocatoriasService,
-    private userService: UserService, 
+    private userService: UserService,
     private practicaservice: PracticaService,
     private documentoAnexo1: DocumentoAnexo1Service) { }
 
@@ -178,14 +178,14 @@ export class Anexo1Component implements AfterViewInit {
           });
         });
       });
-      
+
 
     });
   }
 
   descargarPDF() {
     const idAnexo1 = this.anexo1generado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/anexo1/${idAnexo1}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/anexo1/${idAnexo1}`;
     window.open(url, '_blank');
   }
 

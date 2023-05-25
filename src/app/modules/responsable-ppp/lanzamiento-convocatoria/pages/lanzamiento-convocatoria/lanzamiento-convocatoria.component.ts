@@ -92,7 +92,7 @@ export class LanzamientoConvocatoriaComponent {
 
   ngOnInit(): void {
 
-  
+
   }
 
   seleccionarSolicitud(solicitud: any) {
@@ -114,7 +114,7 @@ export class LanzamientoConvocatoriaComponent {
     this.responsableppservice.getBuscarcedula(this.idusuario).subscribe(datausu => {
       console.log(datausu);
       this.dataresponsable = datausu.idResponsablePPP;
-      
+
     this.solicitudService.getSolicitudesActividadesPorResposanble(this.dataresponsable )
     .subscribe((res) => (this.solicitudesCompletas = res));
     });
@@ -141,13 +141,13 @@ console.log(id);
         this.convocatoria.estadoConvocatoria = true;
         return this.convocatoriaService.crearConvocatoria(this.convocatoria).subscribe(
           (res) => {
-    
+
             this.convocatoriaGenerada = res.idConvocatorias
             console.log(res);
             console.log(this.convocatoriaGenerada)
             this.listarAsignadoActividades();
           },
-    
+
           (err) => console.error(err)
         );
       })
@@ -176,7 +176,7 @@ console.log(id);
 
   descargarPDF() {
     const idConvocatoria = this.convocatoriaGenerada; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/generar/${idConvocatoria}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/generar/${idConvocatoria}`;
     window.open(url, '_blank');
   }
 

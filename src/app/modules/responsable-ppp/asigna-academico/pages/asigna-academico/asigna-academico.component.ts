@@ -409,7 +409,7 @@ export class AsignaAcademicoComponent implements AfterViewInit {
   //Metodo para descargar el documento
   descargarPDF() {
     const idPractica = this.llevarid; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/academico/${idPractica}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/academico/${idPractica}`;
     window.open(url, '_blank');
   }
 

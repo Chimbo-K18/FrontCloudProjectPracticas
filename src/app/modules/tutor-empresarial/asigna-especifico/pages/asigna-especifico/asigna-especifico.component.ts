@@ -177,7 +177,7 @@ export class AsignaEspecificoComponent implements AfterViewInit {
         });
       });
     });
-    
+
   };
 
   tutorselect: any;
@@ -195,7 +195,7 @@ export class AsignaEspecificoComponent implements AfterViewInit {
       });
     });
   }
-  ///asignar tutor 
+  ///asignar tutor
   idAsignar: any
   idPrac: any
   cedUsuario: any
@@ -232,12 +232,12 @@ export class AsignaEspecificoComponent implements AfterViewInit {
   }
 
 
-  
+
   descargarPDF() {
     const idSolicitud = this.idPrac; // obtén el ID de la solicitud
     console.log(idSolicitud);
-    
-    const url = `http://localhost:8080/api/jasperReport/especifico/${idSolicitud}`;
+
+    const url = `http://68.183.134.207:8080/api/jasperReport/especifico/${idSolicitud}`;
     window.open(url, '_blank');
   }
 

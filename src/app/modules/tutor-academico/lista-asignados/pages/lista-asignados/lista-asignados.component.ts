@@ -49,13 +49,13 @@ export class ListaAsignadosComponent implements OnInit {
   ngOnInit(): void {
     this.getEstudiantesAsignados();
   }
-  
+
   user!:any;
   getEstudiantesAsignados(){
     this.user = localStorage.getItem("idusuario");
     console.log("id usuario " + this.user)
     this.userService.getuscedula(this.user).subscribe(dataUserEncon => {
-    this.http.get('http://localhost:8080/api/practica/listadoAprobados/'+dataUserEncon.cedula).subscribe({
+      this.http.get('http://68.183.134.207:8080/api/practica/listadoAprobados/'+dataUserEncon.cedula).subscribe({
       next: (response: any) => {
         console.log(response);
         this.datos = response;
@@ -67,7 +67,7 @@ export class ListaAsignadosComponent implements OnInit {
         alert("Error while fetching the records")
       }
     });
-  }); 
+  });
   }
 
   applyFilter(event: Event) {

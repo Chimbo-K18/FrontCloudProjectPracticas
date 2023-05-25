@@ -23,7 +23,7 @@ import { DocumentoAnexo8Service } from 'src/app/services/docAnexos/DocumentoAnex
 
 
 export class GeneraAnexo8Component   implements AfterViewInit{
-  
+
 
   practicasSolicitud: SolicitudPracticas[] = [] ;
   mivariable !: any;
@@ -73,8 +73,8 @@ export class GeneraAnexo8Component   implements AfterViewInit{
   });
 
   isEditable = false;
-  constructor(private _formBuilder: FormBuilder, 
-    private practicaservice: PracticaService, 
+  constructor(private _formBuilder: FormBuilder,
+    private practicaservice: PracticaService,
     private anexo8service: Anexo8Service,
     private documentoAnexo8: DocumentoAnexo8Service) { }
 
@@ -128,14 +128,14 @@ export class GeneraAnexo8Component   implements AfterViewInit{
 
   descargarPDF() {
     const idAnexo8 = this.idAnexo8Generado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/anexo8/${idAnexo8}`
+    const url = `http://68.183.134.207:8080/api/jasperReport/anexo8/${idAnexo8}`
     window.open(url, '_blank');
   }
-  
+
   fileChangeEvent(event: any) {
     this.filesToUpload = <Array<File>>event.target.files;
   }
-  
+
   onLoad(event: Event): void {
     const element = event.target as HTMLInputElement;
     const file = element.files?.item(0);
@@ -150,7 +150,7 @@ export class GeneraAnexo8Component   implements AfterViewInit{
       );
     }
   }
-  
+
   public upload(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -178,11 +178,11 @@ export class GeneraAnexo8Component   implements AfterViewInit{
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo8') || '{}');
     const documentoAnexo8 = idDoc.id_documentoAnexo8;
-    
+
     this.anexo8service.updateDocumentoAnexo8(this.idAnexo8Generado, documentoAnexo8).subscribe(
       response => {
         console.log('Documento actualizado correctamente');

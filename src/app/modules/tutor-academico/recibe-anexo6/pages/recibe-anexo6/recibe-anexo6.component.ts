@@ -29,14 +29,14 @@ export class RecibeAnexo6Component  {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'carrera','descargar', 'Aceptar'];
   dataSource = new MatTableDataSource<Practica>([]);
   anexo6: Anexo6 = new Anexo6();
-  
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   constructor(private documentoAnexo6: DocumentoAnexo6Service, private _formBuilder: FormBuilder ,private responsableppservice: Responsable_PPPService, private practicaservice: PracticaService, private anexo6service: Anexo6Service){
-    
+
   }
   ngOnInit(): void {
 
@@ -94,7 +94,7 @@ export class RecibeAnexo6Component  {
   descargarPDF(anexogenerado :any) {
 
     this.anexo6generado = anexogenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/documentoAnexo6/download/${this.anexo6generado}`;
+    const url = `http://68.183.134.207:8080/api/documentoAnexo6/download/${this.anexo6generado}`;
     window.open(url, '_blank');
   }
 
@@ -104,7 +104,7 @@ export class RecibeAnexo6Component  {
     console.log(this.Anexo6id);
   }
 
-  
+
   public upload(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -139,11 +139,11 @@ export class RecibeAnexo6Component  {
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo6') || '{}');
     const documentoAnexo6 = idDoc.id_documentoAnexo6;
-    
+
     this.anexo6service.updateDocumentoAnexo6(this.Anexo6id, documentoAnexo6).subscribe(
       response => {
         console.log('Documento actualizado correctamente');
@@ -155,12 +155,12 @@ export class RecibeAnexo6Component  {
   }
 
 
-  
+
   resetStepper() {
     this.listarpracticas();
     this.stepper.reset();
   }
 
- 
+
 
 }

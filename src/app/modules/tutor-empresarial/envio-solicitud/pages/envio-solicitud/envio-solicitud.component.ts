@@ -347,7 +347,7 @@ export class EnvioSolicitudComponent implements OnInit {
   //Metodo para descargar la solicitud de practicas
   descargarPDF() {
     const idSolicitud = this.solicitudGenerada; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/descargar/${idSolicitud}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/descargar/${idSolicitud}`;
     window.open(url, '_blank');
   }
 

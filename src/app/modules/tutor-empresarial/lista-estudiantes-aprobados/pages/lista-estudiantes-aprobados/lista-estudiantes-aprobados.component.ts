@@ -66,7 +66,7 @@ export class ListaEstudiantesAprobadosComponent implements OnInit {
         console.log(data);
         this.tutorEmpre = data.idTutorEmpresarial;
 
-        this.http.get('http://localhost:8080/api/solicitudConvocatoria/listadoAprobados/' + this.tutorEmpre).subscribe({
+        this.http.get('http://68.183.134.207:8080/api/solicitudConvocatoria/listadoAprobados/' + this.tutorEmpre).subscribe({
           next: (response: any) => {
             console.log(response);
             this.datos = response;

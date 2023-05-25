@@ -49,7 +49,7 @@ export class RecibeAnexo8Component  {
   anexo8: Anexo8 = new Anexo8();
 
   constructor(private documentoAnexo8: DocumentoAnexo8Service, private _formBuilder: FormBuilder ,private responsableppservice: Responsable_PPPService, private practicaservice: PracticaService, private anexo8service: Anexo8Service){
-    
+
   }
   ngOnInit(): void {
 
@@ -107,7 +107,7 @@ export class RecibeAnexo8Component  {
   descargarPDF(anexogenerado :any) {
 
     this.anexo8generado = anexogenerado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/documentoAnexo8/download/${this.anexo8generado}`;
+    const url = `http://68.183.134.207:8080/api/documentoAnexo8/download/${this.anexo8generado}`;
     window.open(url, '_blank');
   }
 
@@ -151,11 +151,11 @@ export class RecibeAnexo8Component  {
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo8') || '{}');
     const documentoAnexo8 = idDoc.id_documentoAnexo8;
-    
+
     this.anexo8service.updateDocumentoAnexo8(this.Anexo8id, documentoAnexo8).subscribe(
       response => {
         console.log('Documento actualizado correctamente');
@@ -165,7 +165,7 @@ export class RecibeAnexo8Component  {
       }
     );
   }
- 
+
 
   resetStepper() {
     this.listarpracticas();

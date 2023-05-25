@@ -4,10 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {FormGroup, FormControl} from '@angular/forms';
 import { ConvocatoriasService } from 'src/app/services/convocatorias.service';
-import { Convocatorias } from 'src/app/models/convocatorias'; 
+import { Convocatorias } from 'src/app/models/convocatorias';
 import { SolicitudpracticasService } from 'src/app/services/solicitudpracticas.service';
 import { SolicitudConvocatoriasService } from 'src/app/services/solicitudconvocatoria.service';
-import { SolicitudPracticas } from 'src/app/models/solicitudpracticas'; 
+import { SolicitudPracticas } from 'src/app/models/solicitudpracticas';
 import { SolicitudConvocatoria } from 'src/app/models/solicitudconvocatoria';
 import Swal from 'sweetalert2';
 import { PracticaService } from 'src/app/services/practica.service';
@@ -77,7 +77,7 @@ export class GeneraAnexo7Component   implements AfterViewInit{
 
   isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder, 
+  constructor(private _formBuilder: FormBuilder,
     private anexo7service: Anexo7Service,
     private userService: UserService,
     private practicaservice: PracticaService,
@@ -152,7 +152,7 @@ export class GeneraAnexo7Component   implements AfterViewInit{
           this.anexo7service.crearAnexo7(this.anexo7).subscribe(dataanexo7=>{
             console.log(dataanexo7);
             this.idAnexo7Generado = dataanexo7.idAnexo7;
-  
+
             Swal.fire(
               'PROCESO',
               'GENERADO CON EXITO',
@@ -166,14 +166,14 @@ export class GeneraAnexo7Component   implements AfterViewInit{
 
   descargarPDF() {
     const idAnexo7 = this.idAnexo7Generado; // obtén el ID de la solicitud
-    const url = `http://localhost:8080/api/jasperReport/anexo7/${idAnexo7}`;
+    const url = `http://68.183.134.207:8080/api/jasperReport/anexo7/${idAnexo7}`;
     window.open(url, '_blank');
   }
 
   fileChangeEvent(event: any) {
     this.filesToUpload = <Array<File>>event.target.files;
   }
-  
+
   onLoad(event: Event): void {
     const element = event.target as HTMLInputElement;
     const file = element.files?.item(0);
@@ -188,7 +188,7 @@ export class GeneraAnexo7Component   implements AfterViewInit{
       );
     }
   }
-  
+
   public upload(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -216,11 +216,11 @@ export class GeneraAnexo7Component   implements AfterViewInit{
       );
     }
   }
-  
+
   actualizarDocumento() {
     const idDoc = JSON.parse(sessionStorage.getItem('ArchivoAnexo7') || '{}');
     const documentoAnexo7 = idDoc.id_documentoAnexo7;
-    
+
     this.anexo7service.updateDocumentoAnexo7(this.idAnexo7Generado, documentoAnexo7).subscribe(
       response => {
         console.log('Documento actualizado correctamente');
