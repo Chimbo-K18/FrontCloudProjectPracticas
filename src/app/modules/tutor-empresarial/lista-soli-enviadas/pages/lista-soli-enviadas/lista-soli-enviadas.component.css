@@ -1,0 +1,134 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 50%;
+}
+
+td, th {
+  width: 13%;
+}
+
+p{
+  font-family: 'Times New Roman', Times, serif;
+
+}
+mat-label{
+font-family: 'Times New Roman', Times, serif;
+}
+input{
+font-family: 'Times New Roman', Times, serif;
+}
+button{
+font-family: 'Times New Roman', Times, serif;
+}
+title{
+font-family: 'Times New Roman', Times, serif;
+}
+text{
+font-family: 'Times New Roman', Times, serif;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  h2{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h3 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h4{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h5{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h6{
+    font-family: 'Times New Roman', Times, serif;
+  } 
+  mat-paginator{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  li{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .mat-stepper-horizontal {
+    font-family: 'Times New Roman', Times, serif;
+
+  }
+
+  td{
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  th{
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 930px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+mat-card{
+  width: 900px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#xd{
+  width: 100%;
+}
+h1, h2{
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+
+}
+
+.mat-column-nombre_carrera {
+width: 200px;
+}
+
+
+.mat-column-fechaEnvioSolicitud {
+width: 100px;
+}
+
+.mat-column-fechaAceptacion {
+  width: 100px;
+  }
+
+.mat-column-nombreSolicitud {
+    width: 100px;
+    }
+
+.bodyL{
+  margin-top: -20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #c4c3ca;
+  background-image: url('src/assets/images/fondowelcome.png');
+background-size: 100% 100%;
+  overflow-x: hidden;
+}
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+.contenedor{
+align-items: center;
+margin-top: 8%;
+margin-left: 36%;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="bodyL">
+    <h1 style="margin-top: 130px; font-size: 30px;"> <strong>Listado de la solicitud de Convocatorias</strong> </h1>
+    <div
+      class="container"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <mat-card>
+        <img
+        src="assets/images/LOGOISTA.png"
+        alt="lg.png"
+        />
+
+        <div style="display: flex; justify-content: center;">
+          <mat-form-field appearance="standard" style="width: 600px;">
+            <mat-label>Búsqueda</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ejm:Nombre " #input>
+          </mat-form-field>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Position Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef style="text-align: left;">Nombre Solicitud</th>
+            <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.nombreSolicitud}} </td>
+          </ng-container> 
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef style="text-align: left;">Descripcion Actividades</th>
+            <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.descripcionActividades}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="fechaE">
+            <th mat-header-cell *matHeaderCellDef style="text-align: left;"> Fecha Envio </th>
+            <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.fechaEnvioSolicitud}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="fechaA">
+            <th mat-header-cell *matHeaderCellDef style="text-align: left;"> Fecha Aceptacion </th>
+            <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.fechaAceptacion}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef style="text-align: left;"> Estado </th>
+            <td mat-cell *matCellDef="let listaconvocatorias">
+              <span *ngIf="listaconvocatorias.solicitudPracticas?.estadoSolicitud; else noAprobado"> Aprobada</span>
+              <ng-template #noAprobado>Pendiente</ng-template>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let rows; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[4]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </mat-card>
+    </div>
+  </body>
+</html>

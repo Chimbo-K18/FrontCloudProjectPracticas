@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista Productos</title>
+  </head>
+  <body class="bodyL">
+    <mat-stepper linear #stepper class="headerxd">
+      <mat-step>
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fase 1</ng-template>
+          <h1 style="margin-top: 30px; font-size: 30px;"> <strong>Lista de Convocatorias Disponibles</strong> </h1>
+          <div
+            style="display: flex; flex-direction: column; align-items: center"
+          >
+            <mat-card style="width: 1200px; margin-top: 25px;" >
+              <img style="width: 130px;margin-block-end: 20px;"
+              src="assets/images/LOGOISTA.png"
+              alt="lg.png"/>
+
+              <table
+                mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+              >
+              <ng-container matColumnDef="idConvocatorias">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let convocatorias">
+                  {{ convocatorias.idConvocatorias}}
+                </td>
+              </ng-container>
+
+                <ng-container matColumnDef="nombreconvocatoria">
+                  <th mat-header-cell *matHeaderCellDef>Nombre Convocatoria</th>
+                  <td mat-cell *matCellDef="let convocatorias">
+                    {{ convocatorias.nombreConvocatoria}}
+                  </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="fechapublicacion">
+                  <th mat-header-cell *matHeaderCellDef>Fecha Publicación</th>
+                  <td mat-cell *matCellDef="let convocatorias">{{ convocatorias.fechaPublicacion }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="fechaexpiracion">
+                  <th mat-header-cell *matHeaderCellDef>Fecha Expiración</th>
+                  <td mat-cell *matCellDef="let convocatorias">{{ convocatorias.fechaExpiracion }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="carrera">
+                  <th mat-header-cell *matHeaderCellDef>Carrera</th>
+                  <td mat-cell *matCellDef="let convocatorias">{{variablecarrera}}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="documento_convocatoria">
+                  <th mat-header-cell *matHeaderCellDef>Documento</th>
+                  <td mat-cell *matCellDef="let convocatorias">
+                    {{ convocatorias.documento_convocatoria }}
+                    <button mat-raised-button   (click)="seleccionarConvocatoria(convocatorias)">Descargar</button>
+                  </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="opciones">
+                  <th mat-header-cell *matHeaderCellDef>Opciones</th>
+                  <td mat-cell *matCellDef="let convocatorias">
+                    <button mat-raised-button color="primary" matStepperNext (click)="capturarid(convocatorias.idConvocatorias)"
+                    >
+                  Postular
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+              <mat-paginator
+                [pageSizeOptions]="[2, 4, 6]"
+                showFirstLastButtons
+                aria-label="Select page of periodic elements"
+              >
+              </mat-paginator>
+            </mat-card>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fase 2</ng-template>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              border-radius: 16px;
+            "
+          >
+            <mat-card style="width: 750px; margin-top: 25px">
+              <h1 style="color: #013F7E;font-size: 25px;"><strong>Verificación de Requisitos</strong></h1>
+
+              <mat-card style="width: 700px">
+                <div>
+                  <div style="display: flex">
+                    <div style="margin-right: 65px">
+                      <h4><strong>Nombre de Convocatoria:</strong></h4>
+                      <p style="font-size: 15px">
+                        {{nombreconvo}}
+                      </p>
+                    </div>
+                    <div>
+                      <h4><strong>Fecha de Envió:</strong></h4>
+                      <p style="font-size: 15px">{{fechaenvio}}</p>
+                    </div>
+                  </div>
+
+                  <H3><strong>Verifique sus Datos Personales</strong> </H3>
+
+                  <div style="display: flex">
+                    <div style="margin-right: 250px">
+                      <h4><strong>Cédula:</strong></h4>
+                      <p style="font-size: 15px">{{cedula}}</p>
+                    </div>
+                    <div>
+                      <h4><strong>Nombre:</strong></h4>
+                      <p style="font-size: 15px">{{nombreusuario}}</p>
+                    </div>
+                  </div>
+
+                  <div style="display: flex">
+                  <div style="margin-right: 110px">
+                    <h4><strong>Correo:</strong></h4>
+                    <p style="font-size: 15px">{{correo}}</p>
+                  </div>
+
+                  
+                </div>
+              </div>
+                <div style="display: flex">
+                  
+                  
+                </div>
+              </mat-card>
+
+              <mat-card>
+                <h3>Ingrese los siguientes parámetros</h3>
+          
+
+                <div>
+                  <h4><strong>Ciclo:</strong></h4>
+                  <input
+                  matInput
+                  placeholder="Ciclo:"
+                  formControlName="secondCtrl"
+                  required name="nombresolicitud" id="ciclo"
+                />
+                </div>
+
+                <div style="margin-right: 110px">
+                  <h4><strong>Periodo:</strong></h4>
+                  <input
+                  matInput
+                  placeholder="Periodo:"
+                  formControlName="secondCtrl"
+                  required name="nombresolicitud" id="periodo"
+                />
+                </div>
+
+                <div>
+                  <h4><strong>Número de contacto:</strong></h4>
+                  <input
+                  matInput
+                  placeholder="Contacto:"
+                  formControlName="secondCtrl"
+                  required name="nombresolicitud" id="contacto"
+                />
+                </div>
+                
+              </mat-card>
+
+              <mat-card style="width: 700px">
+                <H3><strong>Requisitos:</strong> </H3>
+                <div style="text-align: center">
+                  <p style="font-size: 15px" *ngFor="let materia of requisitos">• {{ materia }}</p>
+                </div>
+              </mat-card>
+
+              
+
+              <mat-card style="text-align: center; width: 700px">
+                <mat-checkbox style="font-family: 'Times New Roman', Times, serif;" class="example-margin"
+                  >Marque la casilla si cumple con los requisitos
+                </mat-checkbox>
+              </mat-card>
+
+              <div style="text-align: center">
+                <button
+                style="margin-right: 12px"
+                mat-raised-button
+                color="primary"
+                matStepperPrevious
+              >
+                Back
+              </button>
+                <button mat-raised-button color="primary" matStepperNext (click)=" crearconvocatoria()">
+                  Siguiente
+                </button>
+              </div>
+            </mat-card>
+          </div>
+        </form>
+      </mat-step>
+
+
+      <mat-step  >
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fase 3</ng-template>
+          <div style="display: flex; justify-content: center; align-items: center;">
+
+          <mat-card>
+          
+
+
+          <h1><strong>DESCARGAR EL OFICIO </strong></h1>
+            <p style="text-align: center">
+              Una vez se descargue el oficio, posteriormente deberá firmarlo y
+              <br />
+              nuevamente la subirá en el formato PDF.
+            </p>
+          <div class="download-container">
+
+
+
+            <button mat-raised-button color="primary" (click)="descargarPDF()">
+              <mat-icon>get_app</mat-icon> Descargar Archivo
+            </button>
+            <div class="instructions">
+              Haz clic en el botón para descargar el documento
+            </div>
+          </div>
+          <div style="text-align: center;">
+            <button mat-raised-button matStepperPrevious color="primary" style="margin-right: 20px;">Anterior</button>
+            <button mat-raised-button matStepperNext color="primary">Siguiente</button>
+          </div>
+
+        </mat-card>
+      </div>
+        </form>
+
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Fase 4</ng-template>
+        <div style="display: flex; justify-content: center; align-items: center;">
+
+          <mat-card>
+            <h1><strong>SUBIR EL OFICIO FIRMADO</strong></h1>
+            <p style="text-align: center">
+              Una vez se descargue el oficio, posteriormente deberá firmarlo y
+              <br />
+              nuevamente la subirá en el formato PDF.
+            </p>
+
+            <div class="download-container">
+              <input name="file" id="file"(change)="upload($event)" type="file" #inputFile hidden>
+              <button mat-raised-button color="primary"(click)="inputFile.click()" >
+                <mat-icon>cloud_upload </mat-icon> Subir Documento PDF
+              </button>
+              <div class="instructions">
+                Haz clic en el botón para cargar el documento
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: 5px;
+                text-align: center;
+                max-width: 600px;
+                margin-block-end: 25px;
+              "
+            >
+              <button mat-button><strong>SUBIR EL ARCHIVO PDF</strong></button>
+            </div>
+
+            <div style="text-align: center">
+              <button
+                style="margin-right: 12px"
+                mat-raised-button
+                color="primary"
+                matStepperPrevious
+              >
+                Back
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="stepper.reset()"
+              >
+              Finalizar
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </body>
+</html>

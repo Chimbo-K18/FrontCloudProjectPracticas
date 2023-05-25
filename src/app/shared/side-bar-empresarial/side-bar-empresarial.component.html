@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar ">
+  <header style="font-size: 1.2rem; font-family: 'Times New Roman', Times, serif;">Menú</header>
+  <div class="profile">
+    <img
+    src="assets/images/USUARIO.png"
+          alt="profile_picture">
+    <h3>{{ user_final}}</h3>
+  </div>
+  <li>
+    <a href="/empresarial/dashboard" class="active">
+      <i class="fas fa-qrcode"></i>
+      <span style="font-size: 12px; font-family: 'Times New Roman', Times, serif;">Dashboard</span>
+    </a>
+  </li>
+
+  <li class="dropdown">
+    <a>Solicitud Prácticas</a>
+    <ul class="submenu">
+      <li><a href="/empresarial/solicitud-practicas">Enviar Solicitud</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Reportes</a>
+    <ul class="submenu">
+      <li><a href="/empresarial/lista-soli-enviadas">Solicitudes Enviadas</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Estudiantes</a>
+    <ul class="submenu">
+      <li><a href="/empresarial/estudiantes-aprobados">Aprobados</a></li>
+      <li><a href="/empresarial/ultima-aprobacion">Generar Pre Selección</a></li>
+      <li><a href="/empresarial/asignar-horario">Asignar Horario</a></li>
+
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Práctica</a>
+    <ul class="submenu">
+      <li><a href="/empresarial/asigna-tutor">Asigna Tutor</a></li>
+
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Anexo</a>
+    <ul class="submenu">
+      <li><a href="/empresarial/recibe-anexo1">Revisión Anexo 1</a></li>
+      <li><a href="/empresarial/recibe-anexo5">Revisión Anexo 5</a></li>
+      <li><a href="/empresarial/recibe-anexo6">Revisión Anexo 6</a></li>
+      <li><a href="/empresarial/genera-anexo7">Generar Anexo 7</a></li>
+      <li><a href="/empresarial/recibe-anexo8">Revisión Anexo 8</a></li>
+
+
+
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Cuenta</a>
+    <ul class="submenu">
+      <li><a href="/auth/sign-in">Cerrar Sesión</a></li>
+    </ul>
+  </li>

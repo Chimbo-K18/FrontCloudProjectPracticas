@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Productos</title>
+</head>
+
+<body class="bodyL">
+
+  <h1 style="margin-top: 100px; font-size: 30px;"> <strong>LISTA DE CONVENIOS</strong> </h1>
+
+
+  <div class="container" style="display: flex; justify-content: center; align-items:center;">
+
+    <mat-card>
+      <img
+      src="assets/images/LOGOISTA.png"
+        alt="lg.png"/>
+
+        <div style="display: flex; justify-content: center">
+          <mat-form-field appearance="standard" style="width: 600px">
+            <mat-label>Búsqueda</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Ejm:Nombre"
+              #input
+            />
+          </mat-form-field>
+        </div>
+       
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.convenio.idConvenio}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Número Convenio </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.convenio.numero_convenio}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Empresa </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.empresa.nombreEmpresa}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> F. Elaboración </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.convenio.fecha_elaboracion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="des">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.convenio.descripcion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="itv">
+          <th mat-header-cell *matHeaderCellDef> Numero.ITV </th>
+          <td mat-cell *matCellDef="let convenios"> {{convenios.convenio.numero_itv}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ab">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-slide-toggle label="Toggle" [checked]="element.convenio.estado"
+              (click)="traerEstado(element.convenio.idConvenio)" (change)="cambiarEstado($event, element)"
+              class="toggle">
+            </mat-slide-toggle>
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="colum">
+          <th mat-header-cell *matHeaderCellDef> Modificar </th>
+          <td mat-cell *matCellDef="let element"> <button class="boton-eliminar"
+              (click)="traerConevenio(element.convenio.idConvenio)" data-bs-toggle="modal"
+              data-bs-target="#modal-formulario2">Modificar</button>
+          </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No hay datos para mostrar "{{input.value}}"</td>
+        </tr>
+        
+      </table>
+      <mat-paginator [pageSizeOptions]="[4]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+      <!-- <button style="text-align: center" mat-raised-button color="primary" data-bs-toggle="modal"
+   data-bs-target="#modal-formulario2"><mat-icon>Modificar</mat-icon></button> -->
+      <!-- <button style="text-align: center" mat-raised-button color="warn"><mat-icon>delete</mat-icon></button> -->
+    </mat-card>
+
+
+  </div>
+
+</body>
+
+
+
+</html>
+
+
+<div class="modal" id="modal-formulario2" tabindex="-5" aria-labelledby="modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img style="width: 150px;"
+        src="assets/images/LOGOISTA.png"
+        alt="lg.png"/>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="font-size: 18px;">
+        <form class="form-container">
+          <h1 style="color: #013F7E;text-align: center;"><strong>Editar Convenio</strong></h1>
+
+          <div>
+            <mat-form-field appearance="fill" style=" width: 400px">
+              <mat-label>Número Convocatoria:</mat-label>
+              <input [(ngModel)]="conve.numero_convenio" matInput  placeholder="numeroConvenio:"  name="numeroConvenio" />
+              <mat-icon matSuffix>edit</mat-icon>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style=" width: 400px">
+              <mat-label>Número de ITV:</mat-label>
+              <input [(ngModel)]="conve.numero_itv" matInput placeholder="numeroItv:" name="numeroItv" />
+              <mat-icon matSuffix>edit</mat-icon>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style=" width: 400px">
+              <mat-label>Fecha:</mat-label>
+              <input type="date" [(ngModel)]="conve.fecha_elaboracion" matInput name="fecha_elaboracion"  readonly  />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style=" width: 400px">
+              <mat-label>Descripción:</mat-label>
+              <input [(ngModel)]="conve.descripcion"  matInput placeholder="Descripción:"  required
+                name="descripcionConvenio" />
+            </mat-form-field>
+          </div>
+          <div>
+
+          </div>
+
+          <div style="text-align: right; margin-right: 20px;">
+            <button mat-raised-button color="warn" type="submit"   (click)="onActualizarClick()" data-bs-dismiss="modal">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

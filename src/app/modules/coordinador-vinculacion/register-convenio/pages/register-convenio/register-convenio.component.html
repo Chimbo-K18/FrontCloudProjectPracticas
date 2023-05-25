@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista Productos</title>
+  </head>
+  <body class="bodyL">
+
+    <h1 style="margin-top: 100px; font-size: 30px;"> <strong>Registro Convenio</strong> </h1>
+
+    <mat-stepper linear #stepper class="headerxd">
+      <mat-step>
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fase 1</ng-template>
+
+          
+          <div style="display: flex; justify-content: center; align-items: center;">
+
+            <mat-card style="width: 1100px; margin-top: 25px;">
+              <img style="width: 150px; margin-right: 100px;"
+              src="assets/images/LOGOISTA.png"
+              alt="lg.png"/>
+
+              <mat-form-field
+            class="example-full-width"
+            style="width: 400px; color: #000">
+            <mat-label>Buscar RUC de la Empresa</mat-label>
+            <input
+              matInput
+              placeholder="Buscar..."
+              [formControl]="searchControl"
+            />
+          </mat-form-field>
+          <div class="tbConteiner">
+              <table style="width: 1000px;"
+                mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+              >
+                <!-- Position Column -->
+                <ng-container matColumnDef="idEmpresa">
+                  <th mat-header-cell *matHeaderCellDef>Id Empresa</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.idEmpresa }}
+                  </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombreEmpresa">
+                  <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.nombreEmpresa }}
+                  </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="rucEmpresa">
+                  <th mat-header-cell *matHeaderCellDef>RUC</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.rucEmpresa }}
+                  </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="correo">
+                  <th mat-header-cell *matHeaderCellDef>Correo</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.correo }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="direccion">
+                  <th mat-header-cell *matHeaderCellDef>Dirección</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.direccion }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="numeroTelefono">
+                  <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    {{ empresa.numeroTelefono }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="opcion">
+                  <th mat-header-cell *matHeaderCellDef>Generar Convenio</th>
+                  <td mat-cell *matCellDef="let empresa">
+                    <button mat-raised-button color="primary" matStepperNext (click)="obtenerCedulaSeleccionada(empresa.idEmpresa)">
+                      <mat-icon>check</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+              <mat-paginator
+                [pageSizeOptions]="[2, 4, 6]"
+                showFirstLastButtons
+                aria-label="Select page of empresas"
+              >
+              </mat-paginator>
+            </mat-card>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fase 2</ng-template>
+
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <mat-card class="example-card" style="width: 800px">
+              <mat-card-content>
+                <h1 style="text-align: center"> <strong>Datos Convenio </strong> </h1>
+
+                <div>
+                  <div style="display: flex">
+                    <mat-form-field
+                      appearance="fill"
+                      style="margin-right: 20px; width: 300px"
+                    >
+                      <mat-label>Número Convocatoria:</mat-label>
+                      <input  matInput placeholder="numeroConvenio:" formControlName="secondCtrl" required [(ngModel)]="numcon" name="numeroConvenio"/>
+                      <mat-icon matSuffix>edit</mat-icon>
+                    </mat-form-field>
+
+
+                    <mat-form-field
+                    appearance="fill"
+                    style="margin-right: 20px; width: 300px"
+                  >
+                    <mat-label>Número de ITV:</mat-label>
+                    <input matInput placeholder="numeroItv:" formControlName="secondCtrl" required [(ngModel)]="numitv" name="numeroItv"/>
+                    <mat-icon matSuffix>edit</mat-icon>
+
+                  </mat-form-field>
+                </div>
+                    
+                  </div>
+
+                  
+
+                 
+
+                
+
+                <div>
+
+                  <mat-form-field appearance="fill" style="margin-right: 10px; width: 300px">
+                    <mat-label>Fecha de Elaboración:</mat-label>
+                    <input matInput [matDatepicker]="picker"  [(ngModel)]="fechaela" name="fechaElaboracion" (dateChange)="onDateChange($event)">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+
+                  <mat-form-field
+                    appearance="fill"
+                    style="margin-right: 50px; width: 600px"
+                  >
+                    <mat-label>Descripción:</mat-label>
+                    <input
+                      matInput
+                      placeholder="Descripción:"
+                      formControlName="secondCtrl"
+                      required [(ngModel)]="convenio.descripcion" name="descripcionConvenio"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div style="margin-top: 25px; text-align: center">
+                  <button
+                    style="margin-right: 12px"
+                    mat-raised-button
+                    color="primary"
+                    matStepperPrevious
+                  >
+                    Back
+                  </button>
+                  <button mat-raised-button color="primary" matStepperNext>
+                    Siguiente
+                  </button>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Fase 3</ng-template>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card class="example-card">
+            <h1 style="text-align: left"> <strong> Datos Personales  </strong> </h1>
+            <div style="display: flex">
+              <mat-form-field appearance="fill" style="margin-right: 20px; width: 300px">
+                <mat-label>Fecha de Inicio:</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="fechaini" name="fechaAprobacion" (dateChange)="onDateChange2($event)">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div>
+
+
+              <mat-form-field appearance="fill" style="margin-right: 20px; width: 300px">
+                <mat-label>Fecha de Caducación:</mat-label>
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="fechacaduca" name="fechaCaducidad" (dateChange)="onDateChange3($event)">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <select id="materias" name="materias" [(ngModel)]="carreraSeleccionada" (ngModelChange)="seleccionarCarrera()">
+
+              <option value="">Seleccione una carrera</option>
+              <option *ngFor="let carrera of carrera_nombre" [value]="carrera">{{ carrera }}</option>
+            </select>
+
+            <div style="text-align: center">
+              <button
+                style="margin-right: 12px"
+                mat-raised-button
+                color="primary"
+                matStepperPrevious
+              >
+                Back
+              </button>
+              <button style="margin-right: 12px" mat-raised-button color="primary" (click)="crearconvenio()" matStepperNext>
+                Aceptar
+              </button>
+              
+            </div>
+          </mat-card>
+        </div>
+
+    </mat-step>
+
+
+    <mat-step  [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Subir Documento</ng-template>
+        <div style="display: flex; justify-content: center; align-items: center;">
+        <mat-card>
+        <div class="download-container">
+
+          
+          <h1><strong>SUBIR EL DOCUMENTO </strong></h1>
+              <p style="text-align: center">
+                Recuerde que debe cumplir las normas establecidas,
+                <br />
+                además debera subir en formato PDF
+              </p>
+          <input name="file" id="file"(change)="upload($event)" type="file" #inputFile hidden>
+          <button mat-raised-button color="primary"(click)="inputFile.click()" >
+            <mat-icon>cloud_upload </mat-icon> Subir Documento PDF
+          </button>
+          <div class="instructions">
+            Haz click en el botón para cargar el documento
+          </div>
+        
+        </div>
+        <div style="text-align: center">
+              
+          <button style="margin-right: 12px" mat-raised-button color="warn" (click)="resetStepper()">
+            Finalizar
+          </button>
+          
+        </div>
+      </mat-card>
+        
+    </div>
+      
+      </form>
+
+    </mat-step>
+
+    </mat-stepper>
+  </body>
+</html>

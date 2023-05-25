@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista Productos</title>
+</head>
+
+<body class="bodyL">
+  <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>APROBACIÓN DE ESTUDIANTES </strong> </h1>
+
+
+  <mat-stepper labelPosition="bottom" #stepper style="width: 80%;">
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Fase 1</ng-template>
+      <form [formGroup]="tresFormGroup">
+        <ng-template matStepLabel>Fase 3</ng-template>
+        <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Listado Solicitudes</strong> </h1>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card style="width: 1200px;">
+            <img style="width: 150px; padding-bottom: 10px;"
+            src="assets/images/LOGOISTA.png"
+            alt="lg.png"/>
+            <div>
+
+              <table mat-table [dataSource]="dataF1" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nombre Solicitud</th>
+                  <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.nombreSolicitud}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Envio </th>
+                  <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.fechaEnvioSolicitud}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Aceptacion </th>
+                  <td mat-cell *matCellDef="let listaconvocatorias"> {{listaconvocatorias.solicitudPracticas?.fechaAceptacion}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estado">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estado </th>
+                  <td mat-cell *matCellDef="let listaconvocatorias">
+                    <span *ngIf="listaconvocatorias.solicitudPracticas?.estadoSolicitud; else noAprobado"> Aprobada</span>
+                    <ng-template #noAprobado>Pendiente</ng-template>
+                  </td>
+                </ng-container>
+                <!-- Symbol Column -->
+
+                <ng-container matColumnDef="symbol" bol>
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Solicitudes</th>
+                  <td mat-cell *matCellDef="let listaconvocatorias"> <button mat-raised-button color="primary"
+                      matStepperNext (click)="seleccionarConvocatoria(listaconvocatorias.idConvocatorias)">Seleccionar</button></td>
+
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let rows; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator #paginator2 [pageSizeOptions]="[3, 5, 7]" showFirstLastButtons
+                aria-label="Select page of solicitudes">
+              </mat-paginator>
+            </div>
+          </mat-card>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" >
+          <ng-template matStepLabel>Fase 2</ng-template>
+          <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Listado de Estudiantes</strong> </h1>
+
+          <div style="display: flex; justify-content: center; align-items:center;">
+                          <mat-card  style="width: 1200px;" >
+                            <img style="width: 150px; padding-bottom: 10px;"
+                            src="assets/images/LOGOISTA.png"
+                            alt="lg.png"/>
+                  <div>
+                      <!-- <ng-container *ngIf="datosCargados.length > 0; else noResults"></ng-container> -->
+                      <ng-container *ngIf="datosCargados">
+                      <table mat-table [dataSource]="dataestudiante" class="mat-elevation-z8">
+                          <!-- Position Column -->
+                          <ng-container matColumnDef="id" >
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;" > id</th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> {{listasolicitudconvocatoria.idSolicitudConvocatoria}} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="nombres">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nombres</th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> {{listasolicitudconvocatoria.estudiantePracticante.usuario_estudiante_practicante?.nombres}} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="apellidos">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Apellidos</th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> {{listasolicitudconvocatoria.estudiantePracticante.usuario_estudiante_practicante?.apellidos }} </td>
+                          </ng-container>
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="fecha">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Envio </th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> {{listasolicitudconvocatoria.fechaEnvio}} </td>
+                          </ng-container>
+
+                          <!-- Weight Column -->
+                          <ng-container matColumnDef="carrera">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Carrera</th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> {{listasolicitudconvocatoria.estudiantePracticante.usuario_estudiante_practicante?.carrera}}</td>
+                          </ng-container>
+
+               
+                          <ng-container matColumnDef="opciones">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;">Aprobar</th>
+                              <td mat-cell *matCellDef="let listasolicitudconvocatoria"> <button mat-raised-button color="primary" (click)="selectedestudinate(listasolicitudconvocatoria.idSolicitudConvocatoria)">Aprobar</button></td>
+
+                          </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedestudiante"></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedestudiante"
+                          ></tr>
+               
+                      </table>
+                      <mat-paginator #paginator2 [pageSizeOptions]="[3, 5, 7]" showFirstLastButtons aria-label="Select page of solicitudes">
+                      </mat-paginator>
+                  </ng-container>
+                  
+                  </div>
+
+                  <div>
+                      <h1 style="text-align: center;"> Estudiantes Aprobados </h1>
+                      <ng-container *ngIf="datosCargadosAprobados">
+                          <table mat-table [dataSource]="dataestudiantetrue" class="mat-elevation-z8">
+                              <!-- Position Column -->
+                              <ng-container matColumnDef="id" >
+                                  <th mat-header-cell *matHeaderCellDef style="text-align: center;" hidden> id</th>
+                                  <td mat-cell *matCellDef="let listasolicitudconvocatoriatrue" hidden> {{listasolicitudconvocatoriatrue.idSolicitudConvocatoria}} </td>
+                              </ng-container>
+                              <ng-container matColumnDef="nombres">
+                                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nombres</th>
+                                  <td mat-cell *matCellDef="let listasolicitudconvocatoriatrue"> {{listasolicitudconvocatoriatrue.estudiantePracticante.usuario_estudiante_practicante?.nombres}} </td>
+                              </ng-container>
+                              <ng-container matColumnDef="apellidos">
+                                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Apellidos</th>
+                                  <td mat-cell *matCellDef="let listasolicitudconvocatoriatrue"> {{listasolicitudconvocatoriatrue.estudiantePracticante.usuario_estudiante_practicante?.apellidos }} </td>
+                              </ng-container>
+                              <!-- Name Column -->
+                              <ng-container matColumnDef="fecha">
+                                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Envio </th>
+                                  <td mat-cell *matCellDef="let listasolicitudconvocatoriatrue"> {{listasolicitudconvocatoriatrue.fechaEnvio}} </td>
+                              </ng-container>
+
+                              <!-- Weight Column -->
+                              <ng-container matColumnDef="carrera">
+                                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Carrera</th>
+                                  <td mat-cell *matCellDef="let listasolicitudconvocatoriatrue"> {{listasolicitudconvocatoriatrue.estudiantePracticante.usuario_estudiante_practicante?.carrera}}</td>
+                              </ng-container>
+                              <tr mat-header-row *matHeaderRowDef="displayedestudiantetrue"></tr>
+                              <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedestudiantetrue"
+                              ></tr>
+                            
+                          </table>
+                          <mat-paginator #paginator3 [pageSizeOptions]="[3, 5, 7]" showFirstLastButtons aria-label="Select page of solicitudes">
+                          </mat-paginator>
+                      </ng-container>
+                  </div>
+                  <div style="margin-top:25px; text-align: center;">
+                      <button style="margin-right: 12px"mat-raised-button color="primary" matStepperPrevious >
+                      Back </button>
+                  </div>
+              </mat-card>
+          </div>
+      </form>
+  </mat-step>
+</mat-stepper>
+
+</body>
+
+</html>

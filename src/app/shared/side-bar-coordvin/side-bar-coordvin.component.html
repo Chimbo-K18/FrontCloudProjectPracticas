@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar">
+  <header style="font-size: 1.2rem; font-family: 'Times New Roman', Times, serif;">Menú</header>
+  <div class="profile">
+    <img
+    src="assets/images/USUARIO.png"    
+      alt="profile_picture">
+    <h3>{{ user_final}}</h3>
+  </div>
+  <li>
+    <a href="/coordinador/dashboard" class="active">
+      <i class="fas fa-qrcode"></i>
+      <span style="font-size: 12px; font-family: 'Times New Roman', Times, serif;">Dashboard</span>
+    </a>
+  </li>
+
+  <li class="dropdown">
+    <a>Registros</a>
+    <ul class="submenu">
+      <li><a href="/coordinador/registro-empresa">Nueva Empresa</a></li>
+      <li><a href="/coordinador/registro-convenio">Nuevo Convenio</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Reportes</a>
+    <ul class="submenu">
+      <li><a href="/coordinador/listado-empresas">Lista Empresas</a></li>
+      <li><a href="/coordinador/lista-convenios">Lista Convenios</a></li>
+    </ul>
+  </li>
+
+
+  <li class="dropdown">
+    <a>Cuenta</a>
+    <ul class="submenu">
+      <li><a href="/auth/sign-in">Cerrar Sesión</a></li>
+    </ul>
+  </li>

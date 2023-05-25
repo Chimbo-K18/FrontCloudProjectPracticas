@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar">
+  <header style="font-size: 1.2rem; font-family: 'Times New Roman', Times, serif;">Menú</header>
+  <div class="profile">
+    <img
+    src="assets/images/USUARIO.png"
+          alt="profile_picture">
+    <h3>{{ user_final}}</h3>
+  </div>
+  <li>
+    <a href="estudiante/dashboard" class="active">
+      <i class="fas fa-qrcode"></i>
+      <span style="font-size: 12px; font-family: 'Times New Roman', Times, serif;">Dashboard</span>
+    </a>
+  </li>
+
+  <li class="dropdown">
+    <a>Convocatorias</a>
+    <ul class="submenu">
+      <li><a href="/estudiante/lista-convocatorias">Disponibles</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Gestion de Solicitudes</a>
+    <ul class="submenu">
+      <li><a href="/estudiante/lista-aprovacion">Solicitudes Enviadas</a></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Anexos</a>
+    <ul class="submenu">
+      <li><a href="/estudiante/genera-anexo2">Anexo 2</a></li>
+      <li><a href="/estudiante/genera-anexo3">Anexo 3</a></li>
+      <li><a href="/estudiante/genera-anexo6">Anexo 6</a></li>
+      <li><a href="/estudiante/genera-anexo8">Anexo 8</a></li>
+
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Cuenta</a>
+    <ul class="submenu">
+      <li><a href="/auth/sign-in">Cerrar Sesión</a></li>
+
+
+      
+    </ul>
+  </li>
+
+

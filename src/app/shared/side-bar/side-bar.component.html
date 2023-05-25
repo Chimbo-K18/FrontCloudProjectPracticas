@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar">
+  <header style="font-size: 1.2rem; font-family: 'Times New Roman', Times, serif;">Menú</header>
+    <div class="profile" >
+        <img src="assets/images/USUARIO.png"
+            alt="profile_picture">
+        <h3 style="font-size: 15px;">{{ user_final}}</h3>
+    </div><li>
+        <a href="/administrador/dashboard" class="active">
+            <i class="fas fa-qrcode"></i>
+            <span style="font-size: 12px; font-family: 'Open Sans', sans-serif;">Dashboard</span>
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a>Registros</a>
+        <ul class="submenu">
+          <li><a href="/administrador/register-coord-vinculacion">Coordinador Vinculación</a></li>
+          <li><a href="/administrador/register-responsable">Responsable PPP</a></li>
+          <li><a href="/administrador/register-director">Director Carrera</a></li>
+        </ul>
+      </li>
+
+    <li class="dropdown">
+        <a>Reportes</a>
+        <ul class="submenu">
+          <li><a href="/administrador/lista-coordinador">Lista Coordinadores</a></li>
+          <li><a href="/administrador/lista-responsable">Lista Responsables</a></li>
+          <li><a href="/administrador/lista-director">Lista Directores</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a>Cuenta</a>
+        <ul class="submenu">
+          <li><a href="/auth/sign-in">Cerrar Sesión</a></li>
+        </ul>
+      </li>
+
+

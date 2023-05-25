@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body class="bodyL">
+
+  <mat-stepper labelPosition="bottom" #stepper style="width: 80%;">
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Fase 1</ng-template>
+      <form [formGroup]="tresFormGroup">
+        <ng-template matStepLabel>Fase 1</ng-template>
+        <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Asignar Horarios</strong> </h1>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card style="width: 1200%;">
+            <img style="width: 150px; padding-bottom: 10px;"
+            src="assets/images/LOGOISTA.png"
+            alt="lg.png"/>
+            <div>
+
+              <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+
+              <table mat-table [dataSource]="dataF1" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nombre Solicitud</th>
+                  <td mat-cell *matCellDef="let practicasSolicitud"> {{practicasSolicitud.solicitudPracticas?.nombreSolicitud}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Envio Solicitud</th>
+                  <td mat-cell *matCellDef="let practicasSolicitud"> {{practicasSolicitud.solicitudPracticas?.fechaEnvioSolicitud}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Aceptación </th>
+                  <td mat-cell *matCellDef="let practicasSolicitud"> {{practicasSolicitud.solicitudPracticas?.fechaAceptacion}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estado">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Estado </th>
+                  <td mat-cell *matCellDef="let practicasSolicitud">
+                    <span *ngIf="practicasSolicitud.solicitudPracticas?.estadoSolicitud; else noAprobado"> Aprobada</span>
+                    <ng-template #noAprobado>Pendiente</ng-template>
+                  </td>
+                </ng-container>
+                <!-- Symbol Column -->
+
+                <ng-container matColumnDef="symbol" bol>
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Solicitudes</th>
+                  <td mat-cell *matCellDef="let practicasSolicitud"> <button mat-raised-button color="primary"
+                      matStepperNext (click)="seleccionarConvocatoria(practicasSolicitud)" (click)=" traerconvocatoria(practicasSolicitud.idConvocatorias)">Seleccionar</button></td>
+
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let rows; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator #paginator2 [pageSizeOptions]="[6]" showFirstLastButtons
+                aria-label="Select page of solicitudes">
+              </mat-paginator>
+            </div>
+          </mat-card>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+      <!--  TENER EN CUENTA QUE ESTA PARTE FALTA VALIDAR EL firstFormGroup-->
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fase 2</ng-template>
+        <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Listado de Solicitudes</strong> </h1>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card style="width: 1200%;">
+            <img style="width: 150px; padding-bottom: 10px;"
+            src="assets/images/LOGOISTA.png"
+            alt="lg.png"/>
+            <div>
+
+              <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+            <!-- CAMBIAR LOS DATOS EN EL TS ESTA TABLA ESTA CON DATOS QUE NO COORESPONDEN, OJITO AHI -->
+              <table mat-table [dataSource]="dataTabla" class="mat-elevation-z8">
+                <!-- Position Column -->
+
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nombre Estudiante</th>
+                  <td mat-cell *matCellDef="let listassolicitudesll"> {{listassolicitudesll.estudiantePracticante.usuario_estudiante_practicante?.nombres}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="carrera">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Carrera </th>
+                  <td mat-cell *matCellDef="let listassolicitudesll"> {{listassolicitudesll.estudiantePracticante.usuario_estudiante_practicante?.carrera}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha envio </th>
+                  <td mat-cell *matCellDef="let listassolicitudesll">{{listassolicitudesll.fechaEnvio}}</td>
+                </ng-container>
+                <!-- Symbol Column -->
+
+                <!-- el boton para abrir el modal si esta funcional es el que esta aqui abajo  -->
+                <!-- el boton para abrir el modal si esta funcional es el que esta aqui abajo  -->
+                <!-- el boton para abrir el modal si esta funcional es el que esta aqui abajo  -->
+                <!-- el boton para abrir el modal si esta funcional es el que esta aqui abajo  -->
+                <!-- el boton para abrir el modal si esta funcional es el que esta aqui abajo  -->
+
+                <ng-container matColumnDef="sy" bol>
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Asignar Horario </th>
+                  <td mat-cell *matCellDef="let listassolicitudesll"><button mat-raised-button  color="primary" data-bs-toggle="modal" data-bs-target="#modal-formulario"  (click)="Captirarid(listassolicitudesll.idSolicitudConvocatoria)">
+                    <mat-icon>edit</mat-icon> </button></td>
+
+                </ng-container>
+
+
+                <ng-container matColumnDef="si">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Ciclo</th>
+                  <td mat-cell *matCellDef="let listassolicitudesll"> {{listassolicitudesll.ciclo}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="dColumns"></tr>
+                <tr mat-row *matRowDef="let rows; columns: dColumns;"></tr>
+              </table>
+              <mat-paginator #paginator2 [pageSizeOptions]="[6]" showFirstLastButtons
+                aria-label="Select page of solicitudes">
+              </mat-paginator>
+            </div>
+            <div style="margin-top:25px; text-align: center;">
+                <button mat-raised-button color="primary" matStepperNext (click)="listarpracticas()" style="margin-left: 10px;">Siguiente</button>
+
+                <button mat-raised-button color="primary" matStepperPrevious style="margin-left: 10px;">Back</button>
+                <!-- BOTON SI QUIERES PROVAR  EL MODAL  -->
+                <!-- <button mat-raised-button  color="primary" data-bs-toggle="modal" data-bs-target="#modal-formulario">
+                    <mat-icon>edit</mat-icon> </button> -->
+
+
+              </div>
+          </mat-card>
+
+        </div>
+      </form>
+
+    </mat-step>
+
+
+    <mat-step [stepControl]="tresFormGroup">
+      <!--  TENER EN CUENTA QUE ESTA PARTE FALTA VALIDAR EL firstFormGroup-->
+      <form [formGroup]="tresFormGroup">
+        <ng-template matStepLabel>Fase 3</ng-template>
+        <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Detalles de estudiantes practicantes</strong> </h1>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card style="width: 1200%;">
+            <img style="width: 150px; padding-bottom: 10px;"
+            src="assets/images/LOGOISTA.png"
+            alt="lg.png"/>
+            <div>
+              <table mat-table [dataSource]="datam" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nombre Estudiante</th>
+                  <td mat-cell *matCellDef="let listaspracticastrue"> {{listaspracticastrue.solicitudConvocatoria.estudiantePracticante.usuario_estudiante_practicante.nombres}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="fecha">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha Inicio</th>
+                  <td mat-cell *matCellDef="let listaspracticastrue"> {{listaspracticastrue.fechaInicio}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="carrera">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;">Fecha Fin</th>
+                  <td mat-cell *matCellDef="let listaspracticastrue"> {{listaspracticastrue.fechaFin}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estafin">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Hora Inicio </th>
+                  <td mat-cell *matCellDef="let listaspracticastrue"> {{listaspracticastrue.horaInicio}}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="sy">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Hora Fin</th>
+                  <td mat-cell *matCellDef="let listaspracticastrue"> {{listaspracticastrue.horaSalida}} </td>
+
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="diColumns"></tr>
+                <tr mat-row *matRowDef="let rows; columns: diColumns;"></tr>
+              </table>
+              <mat-paginator #paginator2 [pageSizeOptions]="[6]" showFirstLastButtons
+                aria-label="Select page of solicitudes">
+              </mat-paginator>
+            </div>
+
+            <button  mat-raised-button color="primary" (click)="resetStepper()" > Back</button>
+
+          </mat-card>
+        </div>
+       
+      </form>
+
+    </mat-step>
+
+  </mat-stepper>
+
+
+
+
+
+  <div class="modal" id="modal-formulario" tabindex="-5" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="container">
+
+        <div class="modal-content">
+
+          <div class="container">
+
+
+            <div class="modal-header">
+                <h2 style="color: black;">Asignacion de Horario</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+            <div style="display: flex; flex-direction: column; ">
+
+                <div style="color: black; display: flex; justify-content: center; align-items: center;">
+                    <div style="text-align: center;">
+                      <h3><strong>FECHA INICIO</strong></h3>
+                      <mat-form-field class="example-full-width" style="width: 200px; margin-right: 20px;">
+                        <mat-label>Fecha inicio</mat-label>
+                        <input type="date" matInput id="fechainicio">
+                      </mat-form-field>
+                    </div>
+                    <div style="text-align: center;">
+                      <h3><strong>FECHA FIN</strong></h3>
+                      <mat-form-field class="example-full-width" style="width: 200px;">
+                        <mat-label>Fecha final</mat-label>
+                        <input type="date" matInput id="fechafinal">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div style="color: black; display: flex; justify-content: center; align-items: center;">
+                    <div style="text-align: center;">
+                      <h3><strong>HORA ENTRADA</strong></h3>
+                      <mat-form-field class="example-full-width" style="width: 200px; margin-right: 20px;">
+                        <mat-label>Hora inicio</mat-label>
+                        <input type="time" matInput id="horainicio">
+                      </mat-form-field>
+                    </div>
+                    <div style="text-align: center;">
+                      <h3><strong>HORA SALIDA</strong></h3>
+                      <mat-form-field class="example-full-width" style="width: 200px;">
+                        <mat-label>Hora final</mat-label>
+                        <input type="time" matInput id="horafin">
+                      </mat-form-field>
+                    </div>
+                  </div>
+              </div>
+
+            <div style="text-align: center;">
+
+              <button mat-flat-button color="warn" (click)="Asignarhorario()" data-bs-dismiss="modal">GENERAR </button>
+
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+</body>
+
+</html>

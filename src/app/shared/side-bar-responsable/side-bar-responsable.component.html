@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+
+<div class="sidebar">
+  <header style="font-size: 1.2rem; font-family: 'Times New Roman', Times, serif;">Menú</header>
+  <div class="profile">
+    <img
+    src="assets/images/USUARIO.png"
+          alt="profile_picture">
+    <h3>{{ user_final}}</h3>
+  </div>
+  <li>
+    <a href="/responsable/dashboard" class="active">
+      <i class="fas fa-qrcode"></i>
+      <span style="font-size: 12px; font-family: 'Times New Roman', Times, serif;">Dashboard</span>
+    </a>
+  </li>
+
+  <li class="dropdown">
+    <a>Registros</a>
+    <ul class="submenu">
+      <li><a href="/responsable/registro-empresarial">Tutor Empresarial</a></li>
+    </ul>
+  </li>
+
+
+  <li class="dropdown">
+    <a>Listado</a>
+    <ul class="submenu">
+      <li><a href="/responsable/lista-empresariales">Tutores Empresariales</a></li>
+      <li><a href="/responsable/lista-convocatorias">Convocatorias</a></li>
+
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a>Lista Anexos</a>
+    <ul class="submenu">
+      <li><a href="/responsable/recibe-anexo1">Anexo 1</a></li>
+      <li><a href="/responsable/recibe-anexo2">Anexo 2</a></li>
+      <li><a href="/responsable/recibe-anexo3">Anexo 3</a></li>
+      <li><a href="/responsable/recibe-anexo4">Anexo 4</a></li>
+      <li><a href="/responsable/recibe-anexo5">Anexo 5</a></li>
+      <li><a href="/responsable/recibe-anexo6">Anexo 6</a></li>
+      <li><a href="/responsable/recibe-anexo7">Anexo 7</a></li>
+      <li><a href="/responsable/recibe-anexo8">Anexo 8</a></li>
+
+    </ul>
+  </li>
+
+
+  <li class="dropdown">
+    <a>Solicitud Prácticas</a>
+    <ul class="submenu">
+      <li><a href="/responsable/solicitud-recibida">Recibidas</a></li>
+      <li><a href="/responsable/lista-solicitudes">Aprobadas</a></li>
+      <li><a href="/responsable/registro-actividad">Asignar Actividades</a></li>
+
+    </ul>
+  </li>
+  
+
+  <li class="dropdown">
+    <a>Convocatoria</a>
+    <ul class="submenu">
+      <li><a href="/responsable/lanzamiento-convocatoria">Lanzar Convocatoria</a></li>
+      <li><a href="/responsable/aprobacion-estudiantes">Aprobar Estudiantes</a></li>
+
+
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a>Practica</a>
+    <ul class="submenu">
+      <li><a href="/responsable/asignar-academico">Asignación Academico</a></li>
+    </ul>
+  </li>
+
+
+  
+
+
+
+  <li class="dropdown">
+    <a>Cuenta</a>
+    <ul class="submenu">
+      <li><a href="/auth/sign-in">Cerrar Sesión</a></li>
+    </ul>
+  </li>

@@ -1,0 +1,237 @@
+.bodyL{
+  margin-top: -20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #c4c3ca;
+  background-image: url('src/assets/images/fondowelcome.png');
+background-size: 100% 100%;
+  overflow-x: hidden;
+  }
+
+  p{
+    font-family: 'Times New Roman', Times, serif;
+  
+  }
+  mat-label{
+  font-family: 'Times New Roman', Times, serif;
+  }
+  input{
+  font-family: 'Times New Roman', Times, serif;
+  }
+  button{
+  font-family: 'Times New Roman', Times, serif;
+  }
+  title{
+  font-family: 'Times New Roman', Times, serif;
+  }
+  text{
+  font-family: 'Times New Roman', Times, serif;
+  }
+  
+  h1{
+      font-family: 'Times New Roman', Times, serif;
+    }
+  
+    h2{
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h3 {
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h4{
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h5{
+      font-family: 'Times New Roman', Times, serif;
+    }
+    h6{
+      font-family: 'Times New Roman', Times, serif;
+    } 
+    mat-paginator{
+      font-family: 'Times New Roman', Times, serif;
+    }
+    li{
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .mat-stepper-horizontal {
+      font-family: 'Times New Roman', Times, serif;
+  
+    }
+  
+    td{
+      font-family: 'Times New Roman', Times, serif;
+    }
+  
+    th{
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  .container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 1100px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    
+table {
+  width: 100%;
+}
+  
+    h1{
+      font-size: 1.3rem;
+      color: #000;
+      text-align: center;
+      letter-spacing: 1px;
+      transition: 0.3s;
+  }
+
+  mat-card {
+  width: 690px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(11, 11, 11, 0.3);
+    width: 600px;
+    height: 260px;
+    background-color: #ffffff;
+    padding: 10px 30px 40px;
+  }
+
+  .headerxd{
+    margin-top: 60px;
+ width: 75%;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: rgba(0, 0, 0, 0);
+
+
+
+
+
+ }
+  
+  .card h3 {
+    font-size: 14px;
+    font-weight: 300;
+    color: #005af0;
+    
+  }
+  
+  .drop_box {
+    margin: 10px 0;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 3px dotted #a3a3a3;
+    border-radius: 5px;
+  }
+  
+  .drop_box h4 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2e2e2e;
+  }
+  
+  .drop_box p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #005af0;
+  }
+  
+  .btn {
+    text-decoration: none;
+    background-color: #005af0;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .btn:hover{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #005af0;
+    padding: 10px 20px;
+    border: none;
+    outline: 1px solid #010101;
+  }
+  .form input {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #e2e2e2;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+  }
+
+  .file-upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 2px dashed gray;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .file-upload:hover {
+    background-color: #fafafa;
+  }
+
+  .file-upload mat-icon {
+    font-size: 60px;
+  }
+
+  .file-upload span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .file-name {
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .download-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .instructions {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: gray;
+  }
+  
+  .stepper-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }  
+  
+  
+    

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body class="bodyL">
+    
+    
+      <h1>
+        <strong></strong>
+      </h1>
+
+
+
+      <mat-stepper linear #stepper class="headerxd">
+        <mat-step >
+          <ng-template matStepLabel>Enviar una solicitud</ng-template>
+          <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Envio de Solicitud de Practicas Pre-Profesionales</strong> </h1>
+
+          <div style="display: flex; justify-content: center; align-items: center;">
+          <mat-card style="width: 1200px;">
+            <img style="width: 150px; padding-bottom: 30px;"
+            src="assets/images/LOGOISTA.png"
+            alt="lg.png"/>
+
+          
+          <table id="keywords" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Numero de Convenio</th>
+                <th>Numero de ITV</th>
+                <th>Fecha Elaboracion</th>
+                <th>Carrera</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detalles of listaDetalles">
+                <td>{{ detalles?.convenio?.idConvenio ?? "Sin convenio" }}</td>
+                <td>
+                  {{ detalles?.convenio?.numero_convenio ?? "Sin convenio" }}
+                </td>
+                <td>{{ detalles?.convenio?.numero_itv ?? "Sin convenio" }}</td>
+                <td>
+                  {{ detalles?.convenio?.fecha_elaboracion ?? "Sin convenio" }}
+                </td>
+                <td>{{ detalles?.nombre_carrera }}</td>
+
+                <td>
+                  <button mat-raised-button color="primary"
+                    matStepperNext
+                    class="btn btn-light"
+                    (click)="seleccionarDetalle(detalles)"
+                  >
+                    Seleccionar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card>
+      </div>
+        </mat-step>
+
+        <mat-step >
+          <br />
+          <form [formGroup]="firstFormGroup" (ngSubmit)="validaRequest()">
+            <ng-template matStepLabel>Ingrese datos de solicitud</ng-template>
+            <div style="display: flex; justify-content: center; align-items: center;">
+            <mat-card>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+              "
+            >
+              <mat-form-field appearance="fill" style="width: 43%">
+                <mat-label>Responsable de Practicas</mat-label>
+                <input
+                  id="tutor"
+                  name="teacher"
+                  matInput
+                  readonly
+                  [disabled]="true"
+                  [value]="responsable"
+                />
+
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="width: 43%">
+                <mat-label>Carrera</mat-label>
+                <input
+                  id="carreraes"
+                  name="date"
+                  matInput
+                  [value]="mivariable"
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="width: 43%">
+                <mat-label>Fecha de Envio: </mat-label>
+                <input
+                  id="nuas"
+                  name="numbease"
+                  matInput
+                  [value]="getCurrentDate()"
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="width: 43%">
+                <mat-label>Numero de estudiantes</mat-label>
+                <input
+                  id="numeroe"
+                  name="numbere"
+                  [(ngModel)]="solicitudPractica.numeroEstudiantes"
+                  matInput
+                  placeholder="Ingrese numero de estudiantes"
+                  formControlName="firstCtrl"
+                  required
+                />
+              </mat-form-field>
+
+
+              <mat-form-field appearance="fill" style="width: 43%">
+                <mat-label>Ingrese las actividades requeridas:</mat-label>
+                <input
+                  id="actividad"
+                  name="actividad"
+                  [(ngModel)]="solicitudPractica.descripcionActividades"
+                  matInput
+                  placeholder="Ingrese actividades"
+                  formControlName="firstCtrl"
+                  required
+                />
+              </mat-form-field>
+
+
+            </div>
+            <br />
+            <div style="text-align: center;">
+
+            
+            <button mat-raised-button color="primary" matStepperPrevious style="margin-right: 20px;">Back</button>
+
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+          </mat-card>
+        </div>
+          </form>
+        </mat-step>
+
+        <mat-step>
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Imprimir Archivo</ng-template>
+            <div style="display: flex; justify-content: center; align-items: center;">
+            <mat-card>
+              <h1><strong>DESCARGAR EL OFICIO </strong></h1>
+              <p style="text-align: center">
+                Auna vez se descargue el oficio, posteriormente debera firmarlo y
+                <br />
+                nuevamente la subira en el formato pdf.
+              </p>
+            <div class="download-container">
+              <button mat-raised-button color="primary" (click)="descargarPDF()" >
+                <mat-icon>get_app</mat-icon> Descargar Archivo
+              </button>
+              <div class="instructions" style="    font-family: 'Times New Roman', Times, serif;
+              ">
+                Haz clic en el botón para descargar el documento
+              </div>
+            </div>
+            <div style="text-align: center; ">
+              <button mat-raised-button color="primary" matStepperPrevious style="margin-right: 20px;">Anterior</button>
+              <button mat-raised-button color="primary"  matStepperNext>Siguiente</button>
+            </div>
+          </mat-card>
+        </div>
+          </form>
+
+        </mat-step>
+
+        <mat-step >
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Subir Documento</ng-template>
+            <div style="display: flex; justify-content: center; align-items: center;">
+            <mat-card>
+              <h1><strong>SUBIR EL OFICIO FIRMADO</strong></h1>
+            <p style="text-align: center">
+              Auna vez se descargue el oficio, posteriormente debera firmarlo y
+              <br />
+              nuevamente la subira en el formato pdf.
+            </p>
+            <div class="download-container">
+              <input name="file" id="file"(change)="upload($event)" type="file" #inputFile hidden>
+              <button mat-raised-button color="primary"(click)="inputFile.click()" >
+                <mat-icon>cloud_upload </mat-icon> Subir Documento PDF
+              </button>
+              <div class="instructions" style="    font-family: 'Times New Roman', Times, serif;
+              ">
+                Haz clic en el botón para cargar el documento
+              </div>
+            </div>
+            
+            <div style="text-align: center;">
+              <button mat-raised-button color="primary" matStepperPrevious style="margin-right: 20px;">Back</button>
+              <button mat-raised-button color="warn" matStepperNext (click)="resetStepper()">Finalizar</button>
+            </div>
+          </mat-card>
+        </div>
+          </form>
+          
+        </mat-step>
+        
+      </mat-stepper>
+
+    
+  </body>
+</html>
+<!-- ruta: http://localhost:4200/empresarial/solicitud-practicas -->

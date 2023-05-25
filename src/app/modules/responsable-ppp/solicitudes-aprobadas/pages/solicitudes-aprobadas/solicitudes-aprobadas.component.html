@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bodyL">
+
+
+
+  <div style="color: black;text-align: left; margin-left: 20px; margin-top: 60px;">
+    <img style="width: 250px;margin-block-end: 30px;"
+    src="assets/images/LOGOISTA.png"
+    alt="lg.png"/>
+      <h1 style="margin-top: 30px; font-size: 30px; color: black;text-align: center;"> <strong>Listado de  Solicitudes Aprobadas</strong> </h1>
+
+</div>
+
+
+      <mat-card >
+
+      <mat-card>
+  
+
+        <mat-form-field style="width: 500px;">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+        </mat-form-field>
+
+      </mat-card>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="idSolicitudPracticas">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let listassolicitudes">{{ listassolicitudes.idSolicitudPracticas}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="numeroEstudiantes">
+        <th mat-header-cell *matHeaderCellDef>Número  Estudiantes</th>
+        <td mat-cell *matCellDef="let listassolicitudes">{{ listassolicitudes.numeroEstudiantes}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="nombreSolicitud">
+        <th mat-header-cell *matHeaderCellDef>Nombre Solicitud</th>
+        <td mat-cell *matCellDef="let listassolicitudes">{{listassolicitudes.nombreSolicitud}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="nombre_carrera">
+        <th mat-header-cell *matHeaderCellDef>Nombre Carrera</th>
+        <td mat-cell *matCellDef="let listassolicitudes">{{listassolicitudes.nombre_carrera}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="seleccionar">
+        <th mat-header-cell *matHeaderCellDef>Fecha Envió	</th>
+        <td mat-cell *matCellDef="let listassolicitudes"> {{listassolicitudes.fechaEnvioSolicitud}}
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="seleccionar1">
+        <th mat-header-cell *matHeaderCellDef>Fecha Aceptación</th>
+        <td mat-cell *matCellDef="let listassolicitudes"> {{listassolicitudes.fechaAceptacion}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tutorEmpresarial.empresa.nombreEmpresa">
+        <th mat-header-cell *matHeaderCellDef>Empresa</th>
+        <td mat-cell *matCellDef="let listassolicitudes">{{listassolicitudes.tutorEmpresarial.empresa.nombreEmpresa}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</mat-card>
+</body>
+</html>
