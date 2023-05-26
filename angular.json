@@ -40,13 +40,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "12kb"
                 }
               ],
               "fileReplacements": [
@@ -69,17 +69,21 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "FrontEndPracticas:build:production"
-            },
-            "development": {
-              "browserTarget": "FrontEndPracticas:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "configurations": {
+    "production": {
+      "browserTarget": "FrontEndPracticas:build:production"
+    },
+    "development": {
+      "browserTarget": "FrontEndPracticas:build:development"
+    },
+    "myCustomPort": {
+      "browserTarget": "FrontEndPracticas:build:development",
+      "port": 4000
+    }
+  },
+  "defaultConfiguration": "development"
+},
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
